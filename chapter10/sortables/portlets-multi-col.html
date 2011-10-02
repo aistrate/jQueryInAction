@@ -1,0 +1,198 @@
+<!-- Exercise at page 330 (Take 2) -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Portlets &mdash; Multiple Column</title>
+    <link rel="stylesheet" type="text/css" href="../../styles/core.css">
+    <link rel="stylesheet" type="text/css" href="module.css">
+    <script type="text/javascript" src="../../scripts/jquery-1.6.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-ui-1.8.custom.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+
+        $('div.body').append('<br />' + $('.dummy-text').text());
+
+        $('div.caption img').click(function(){
+          $(this).closest('div.module').find('div.body')
+                 .toggle('fast',function(){
+                     $(this).closest('div.module')
+                            .toggleClass('rolledup',$(this).is(':hidden'));
+                  });
+        });
+        
+        $('.portlet-column > ul').sortable({
+            handle: '.caption',
+            cancel: '.caption img'
+        });
+        
+        $('#portlets_1').sortable('option', 'connectWith', '#portlets_2,#portlets_3');
+        $('#portlets_2').sortable('option', 'connectWith', '#portlets_1,#portlets_3');
+        $('#portlets_3').sortable('option', 'connectWith', '#portlets_1,#portlets_2');
+
+      });
+    </script>
+    
+    <style>
+      .dummy-text {
+        display: none;
+      }
+      .portlet-column {
+        float: left;
+      }
+      .portlet-column > ul {
+        width: 400px;
+        height: 1000px;
+        list-style: none;
+        padding: 0;
+      }
+     </style>
+  </head>
+
+  <body>
+  <div class="dummy-text">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+    Aliquam eget enim id neque aliquet porttitor. Suspendisse
+    nisl enim, nonummy ac, nonummy ut, dignissim ac, justo.
+    Aenean imperdiet semper nibh. Vivamus ligula. In in ipsum
+    sed neque vehicula rhoncus. Nam faucibus pharetra nisi.
+    Integer at metus. Suspendisse potenti. Vestibulum ante
+    ipsum primis in faucibus orci luctus et ultrices posuere
+    cubilia Curae; Proin quis eros at metus pretium elementum.
+  </div>
+
+  <div class="portlet-column">
+
+    <ul id="portlets_1">
+
+      <li id="portlet_11">
+        <div class="module">
+          <div class="caption">
+            <span>Module 1_1</span>
+            <img src="rollup.gif" alt="rollup" title="rolls up this module"/>
+          </div>
+          <div class="body">
+            <strong>Contents of Module 1_1</strong>
+          </div>
+        </div>
+      </li>
+
+      <li id="portlet_12">
+        <div class="module">
+          <div class="caption">
+            <span>Module 1_2</span>
+            <img src="rollup.gif" alt="rollup" title="rolls up this module"/>
+          </div>
+          <div class="body">
+            <strong>Contents of Module 1_2</strong>
+          </div>
+        </div>
+      </li>
+
+      <li id="portlet_13">
+        <div class="module">
+          <div class="caption">
+            <span>Module 1_3</span>
+            <img src="rollup.gif" alt="rollup" title="rolls up this module"/>
+          </div>
+          <div class="body">
+            <strong>Contents of Module 1_3</strong>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+
+  </div>
+
+  <div class="portlet-column">
+
+    <ul id="portlets_2">
+
+      <li id="portlet_21">
+        <div class="module">
+          <div class="caption">
+            <span>Module 2_1</span>
+            <img src="rollup.gif" alt="rollup" title="rolls up this module"/>
+          </div>
+          <div class="body">
+            <strong>Contents of Module 2_1</strong>
+          </div>
+        </div>
+      </li>
+
+      <li id="portlet_22">
+        <div class="module">
+          <div class="caption">
+            <span>Module 2_2</span>
+            <img src="rollup.gif" alt="rollup" title="rolls up this module"/>
+          </div>
+          <div class="body">
+            <strong>Contents of Module 2_2</strong>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+
+  </div>
+
+  <div class="portlet-column">
+
+    <ul id="portlets_3">
+
+      <li id="portlet_31">
+        <div class="module">
+          <div class="caption">
+            <span>Module 3_1</span>
+            <img src="rollup.gif" alt="rollup" title="rolls up this module"/>
+          </div>
+          <div class="body">
+            <strong>Contents of Module 3_1</strong>
+          </div>
+        </div>
+      </li>
+
+      <li id="portlet_32">
+        <div class="module">
+          <div class="caption">
+            <span>Module 3_2</span>
+            <img src="rollup.gif" alt="rollup" title="rolls up this module"/>
+          </div>
+          <div class="body">
+            <strong>Contents of Module 3_2</strong>
+          </div>
+        </div>
+      </li>
+
+      <li id="portlet_33">
+        <div class="module">
+          <div class="caption">
+            <span>Module 3_3</span>
+            <img src="rollup.gif" alt="rollup" title="rolls up this module"/>
+          </div>
+          <div class="body">
+            <strong>Contents of Module 3_3</strong>
+          </div>
+        </div>
+      </li>
+
+      <li id="portlet_34">
+        <div class="module">
+          <div class="caption">
+            <span>Module 3_4</span>
+            <img src="rollup.gif" alt="rollup" title="rolls up this module"/>
+          </div>
+          <div class="body">
+            <strong>Contents of Module 3_4</strong>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+
+  </div>
+
+  </body>
+
+</html>

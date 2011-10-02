@@ -1,0 +1,3 @@
+#!/bin/bash
+
+/Library/apache-tomcat-7.0.21/bin/shutdown.sh

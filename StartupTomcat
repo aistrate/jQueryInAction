@@ -1,0 +1,19 @@
+#!/bin/bash
+
+/Library/apache-tomcat-7.0.21/bin/startup.sh
+
+## Shut down with:
+#  /Library/apache-tomcat-7.0.21/bin/shutdown.sh
+
+
+## The $CATALINA_HOME folder (installation directory of the Apache Tomcat web server):
+#  /Library/apache-tomcat-7.0.21
+
+## The context root (equivalent of a 'virtual directory' in IIS) is defined here:
+#  /Library/apache-tomcat-7.0.21/conf/Catalina/localhost/jqia2.xml
+
+
+## Java is installed here:
+#  /System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home
+## or, equivalently:
+#  /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ajax accordion</title>
+    <link rel="stylesheet" type="text/css" href="../../../themes/cupertino/jquery-ui-1.8.custom.css">
+    <link rel="stylesheet" type="text/css" href="../../../styles/core.css"/>
+    <script type="text/javascript" src="../../../scripts/jquery-1.6.js"></script>
+    <script type="text/javascript" src="../../../scripts/jquery-ui-1.8.custom.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+
+        // Exercise on page 405
+        
+        $.ui.accordion.loadPanel=function(header, content) {
+            if (content.length == 0) return;
+            var href = $('a',header).attr('data-href');
+            if (href.charAt(0) != '#') {
+              content.load(href);
+              $('a',header).attr('data-href','#');
+            }
+        };
+        
+        $('#testSubject').accordion({
+            autoHeight: false,
+            collapsible: true,
+            navigation: true,
+            navigationFilter: function() {
+                if (this.href.toLowerCase()!=location.href.toLowerCase()) return false;
+                var header = $(this).closest('h2');
+                var content = header.next('div');
+                $.ui.accordion.loadPanel(header, content);
+                return true;
+            },
+            active: false
+        });
+        
+        $('.ui-accordion').bind('accordionchangestart',function(event,info){
+            $.ui.accordion.loadPanel(info.newHeader, info.newContent);
+        });
+        
+      });
+    </script>
+    <style type="text/css">
+      #testSubject { width: 600px; }
+    </style>
+  </head>
+
+  <body>
+
+    <div id="testSubject">
+      <h2 id="header_puppies"><a data-href="puppies.html" href="#puppies">Puppies</a></h2>
+      <div id="panel_puppies"></div>
+      <h2 id="header_flowers"><a data-href="flowers.html" href="#flowers">Flowers</a></h2>
+      <div id="panel_flowers"></div>
+      <h2 id="header_food"><a data-href="food.html" href="#food">Food</a></h2>
+      <div id="panel_food"></div>
+    </div>
+
+  </body>
+</html>

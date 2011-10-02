@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercise 1</title>
+    <link rel="stylesheet" type="text/css" href="../../themes/cupertino/jquery-ui-1.8.custom.css">
+    <script type="text/javascript" src="../../scripts/jquery-1.6.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-ui-1.8.custom.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+          
+          $('.testSubject').empty().slider();
+          
+          $('form').bind('slidechange',function(event,info){
+              var hidden = $(event.target).attr('data-hidden');
+              $('[name="'+hidden+'"]').val(info.value);
+          });
+          
+          $('.testSubject').trigger('slidechange', { value: 0 });
+          
+          $('#submitButton').click(function(){
+              $('#console').html(
+                  'Hidden Inputs: <br />' +
+                  $('#hiddenFields').html().replace(/</g,'&lt;')
+                                           .replace(/>/g,'&gt;'));
+          });
+          
+      });
+    </script>
+
+    <style>
+        #pageContainer {
+            margin-left: 50px;
+        }
+        .testSubject.ui-slider-horizontal {
+          width: 320px;
+          height: 8px;
+        }
+    </style>
+  </head>
+
+  <body class="fancy">
+
+    <div id="pageContainer">
+        <form action="" id="labForm">
+            <br />
+            <div class="testSubject" id="slider1" data-hidden="slider1Value"></div>
+            <br /><br />
+            <div class="testSubject" id="slider2" data-hidden="slider2Value"></div>
+            <br /><br />
+            <div class="testSubject" id="slider3" data-hidden="slider3Value"></div>
+            
+            <br /><br />
+            <button type="button" id="submitButton">Submit</button>
+            <br /><br />
+            <div id="console"></div>
+            
+            <div id="hiddenFields">
+                <input type="hidden" name="slider1Value">
+                <input type="hidden" name="slider2Value">
+                <input type="hidden" name="slider3Value">
+            </div>
+        </form>
+    </div>
+
+  </body>
+</html>
